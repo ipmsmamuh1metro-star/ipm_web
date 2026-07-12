@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PR IPM SMA MUHAMMADIYAH 1 METRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     PUBLIC PORTAL
+══════════════════════════════════ -->
+<div id="public-site" class="view active">
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand" onclick="showPage('home')">
+      <img src="https://raw.githubusercontent.com/vikrialhusna221-lang/STORAGE/main/53_20251214_104522_0000.png" alt="Logo" style="height: 40px; width: auto;">
+      <span>PR IPM SMA MUHAMMADIYAH 1 METRO</span>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a onclick="showPage('home'); closeMobileMenu()" id="nav-home" class="active" data-icon="">Beranda</a>
+      <a onclick="showPage('news'); closeMobileMenu()" id="nav-news" data-icon="">Berita</a>
+      <a onclick="showPage('edukasi'); closeMobileMenu()" id="nav-edukasi" data-icon="">Edukasi</a>
+      <a onclick="showPage('dokumentasi'); closeMobileMenu()" id="nav-dokumentasi" data-icon="">Dokumentasi</a>
+      <a onclick="showPage('kalender'); closeMobileMenu()" id="nav-kalender" data-icon="">Kalender</a>
+      <a onclick="showPage('about'); closeMobileMenu()" id="nav-about" data-icon="">Tentang</a>
+      <a onclick="showPage('struktur'); closeMobileMenu()" id="nav-struktur" data-icon="">Struktur</a>
+      <a onclick="showPage('contact'); closeMobileMenu()" id="nav-contact" data-icon="">Kontak</a>
+      <a onclick="showPage('login'); closeMobileMenu()" class="nav-cta" data-icon="">Masuk</a>
+    </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div id="page-home" class="view active">
+    <section class="hero">
+      <h1>Ikatan Pelajar<br><em>Muhammadiyah</em></h1>
+      <p>IPM adalah organisasi pelajar di bawah naungan Muhammadiyah yang berfokus pada pembinaan karakter, kepemimpinan, dan pengembangan potensi pelajar untuk masa depan yang lebih baik.</p>
+      <div class="hero-btns">
+        <button type="button" class="btn btn-primary" onclick="showPage('about')">Tentang Kami →</button>
+      </div>
+      <div class="stats-row">
+        <div class="stat-item"><div class="stat-num">--</div><div class="stat-label">Anggota Aktif</div></div>
+        <div class="stat-item"><div class="stat-num">--</div><div class="stat-label">Prestasi</div></div>
+        <div class="stat-item"><div class="stat-num">53</div><div class="stat-label">Tahun Berdiri</div></div>
+        <div class="stat-item"><div class="stat-num">--</div><div class="stat-label">Program</div></div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--white);">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-tag">Berita Terbaru</div>
+          <h2>Kabar dari Lapangan</h2>
+          <p>Berita IPM berisi informasi dan dokumentasi kegiatan organisasi seperti kajian, seminar, lomba, bakti sosial, serta agenda mendatang.</p>
+        </div>
+        <div class="grid grid-3" id="home-news-grid"></div>
+        <div style="text-align:center; margin-top:2.5rem;">
+          <button class="btn btn-outline" onclick="showPage('news')">Lihat Semua Berita →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-tag">Pencapaian</div>
+          <h2>Prestasi Unggulan</h2>
+          <p>Prestasi IPM menampilkan pencapaian anggota maupun organisasi dalam bidang akademik dan non akademik, penghargaan, serta keberhasilan program kerja.</p>
+        </div>
+        <div class="grid grid-2" id="home-ach-grid"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- NEWS LIST PAGE -->
+  <div id="page-news" class="view">
+    <!-- Header Section -->
+    <div style="background:linear-gradient(135deg, rgba(0,128,0,0.08) 0%, rgba(255,255,0,0.03) 100%); padding:4rem 2rem; text-align:center; border-bottom:1px solid rgba(0,128,0,0.1);">
+      <div class="section-tag" style="justify-content:center; color:var(--gold);">Portal Berita</div>
+      <h1 style="font-family:'Playfair Display',serif; color:#2F2F2F; font-size:2.8rem; margin-top:.5rem; letter-spacing:-0.02em;">Semua Berita</h1>
+      <p style="color:var(--muted); max-width:600px; margin:1rem auto 0; font-size:1.05rem; line-height:1.7;">Koleksi lengkap berita dan informasi terkini dari kegiatan IPM SMA Muhammadiyah 1 Metro</p>
+    </div>
+
+    <!-- News Grid Section -->
+    <section class="news-section">
+      <div class="news-grid" id="news-grid">
+        <!-- Cards akan di-render oleh JavaScript -->
+      </div>
+      <div class="pagination" id="news-pagination" style="display:flex; justify-content:center; gap:0.5rem; margin-top:3rem;"></div>
+    </section>
+  </div>
+
+  <!-- NEWS DETAIL PAGE -->
+  <div id="page-news-detail" class="view">
+    <div class="detail-hero">
+      <button class="back-btn" onclick="showPage('news')">← Kembali ke Berita</button>
+      <h1 id="detail-title">Judul Berita</h1>
+      <div class="meta" id="detail-meta"></div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-img" id="detail-img"></div>
+      <div id="detail-body"></div>
+      <div class="share-buttons" style="margin-top:2rem; padding-top:2rem; border-top:2px solid rgba(0,128,0,0.1);">
+        <span style="font-weight:600; color:var(--text); margin-right:1rem;">Bagikan ke:</span>
+        <button class="share-btn share-btn-facebook" onclick="shareToSocial('facebook')"> Facebook</button>
+        <button class="share-btn share-btn-twitter" onclick="shareToSocial('twitter')"> Twitter</button>
+        <button class="share-btn share-btn-whatsapp" onclick="shareToSocial('whatsapp')"> WhatsApp</button>
+        <button class="share-btn share-btn-copy" onclick="shareToSocial('copy')"> Salin Link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS PAGE -->
+  <div id="page-achievements" class="view">
+    <div style="background:linear-gradient(135deg, #F5F7F6, #FFFFFF); padding:3rem 2rem; text-align:center;">
+      <div class="section-tag" style="justify-content:center; color:var(--gold);">Hall of Fame</div>
+      <h1 style="font-family:'Playfair Display',serif; color:#2F2F2F; font-size:2.5rem; margin-top:.5rem;">Daftar Prestasi</h1>
+    </div>
+    <section class="section">
+      <div class="section-inner">
+        <div class="grid grid-2" id="ach-grid"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div id="page-about" class="view">
+    <div style="background:linear-gradient(135deg, #F5F7F6, #FFFFFF); padding:3rem 2rem; text-align:center;">
+      <div class="section-tag" style="justify-content:center; color:var(--gold);">Profil Organisasi</div>
+      <h1 style="font-family:'Playfair Display',serif; color:#2F2F2F; font-size:2.5rem; margin-top:.5rem;">Tentang IPM</h1>
+    </div>
+    <section class="section">
+      <div class="section-inner">
+        <div class="about-split">
+          <div>
+            <div class="section-tag">Tentang IPM</div>
+            <h2 style="font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:1rem;">IPM SMA MUHAMMADIYAH 1 METRO</h2>
+            <p style="color:var(--muted); line-height:1.8; margin-bottom:1.25rem;"><strong>Ikatan Pelajar Muhammadiyah (IPM)</strong> adalah organisasi pelajar di bawah naungan Muhammadiyah yang berfokus pada pembinaan karakter, kepemimpinan, dan pengembangan potensi pelajar. IPM menjadi wadah bagi siswa untuk belajar berorganisasi, berdakwah, serta berkontribusi positif di lingkungan sekolah dan masyarakat.</p>
+            <p style="color:var(--muted); line-height:1.8; margin-bottom:1.5rem;"><strong>Fungsi dan Peran:</strong> IPM berfungsi sebagai wadah aspirasi pelajar, penggerak kegiatan sekolah, media pembelajaran organisasi, serta sarana pembinaan nilai keislaman dan kepemimpinan. Melalui IPM, pelajar dilatih untuk berpikir kritis, bertanggung jawab, dan memiliki kepedulian sosial.</p>
+            <div class="values-list">
+              <div class="value-item"><div class="value-dot"></div><div><strong>Kajian Keislaman</strong> Memperdalam pemahaman nilai-nilai Islam dan wawasan keislaman.</div></div>
+              <div class="value-item"><div class="value-dot"></div><div><strong>Kepemimpinan</strong> Mengembangkan kemampuan memimpin dan berpikir strategis.</div></div>
+              <div class="value-item"><div class="value-dot"></div><div><strong>Sosial &amp; Dakwah</strong> Memberikan kontribusi nyata kepada masyarakat dan berdakwah dengan bijak.</div></div>
+              <div class="value-item"><div class="value-dot"></div><div><strong>Pengembangan Diri</strong> Meningkatkan potensi akademik dan non akademik setiap anggota.</div></div>
+            </div>
+          </div>
+          <div class="about-visual">
+            <div class="about-quote">"Membangun pelajar yang berkarakter, beriman, dan berdedikasi untuk Indonesia yang lebih baik."</div>
+            <div class="about-detail">PR IPM SMA MUHAMMADIYAH 1 METRO berkomitmen untuk mengembangkan potensi setiap pelajar melalui program kajian, pelatihan kepemimpinan, kegiatan sosial, literasi, dan kewirausahaan yang dirancang untuk membangun karakter yang kuat dan kepedulian sosial yang mendalam.</div>
+            <div class="about-stats">
+              <div class="stat-box">
+                <div class="stat-number" id="stat-members">--</div>
+                <div class="stat-label">Anggota Aktif</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">METRO</div>
+                <div class="stat-label">Lokasi</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">56</div>
+                <div class="stat-label">Angkatan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- STRUKTUR PAGE -->
+  <div id="page-struktur" class="view">
+    <div style="background:linear-gradient(135deg, #F5F7F6, #FFFFFF); padding:3rem 2rem; text-align:center;">
+      <div class="section-tag" style="justify-content:center; color:var(--gold);">Organisasi</div>
+      <h1 style="font-family:'Playfair Display',serif; color:#2F2F2F; font-size:2.5rem; margin-top:.5rem;">Struktur Organisasi</h1>
+      <p style="color:var(--muted); font-size:1.05rem; margin-top:1rem;">Tim Kerja IPM SMA MUHAMMADIYAH 1 METRO Tahun 2026-2027</p>
+    </div>
+    <section class="section">
+      <div class="section-inner">
+        <!-- PEMBINA -->
+        <div class="struktur-section">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--gold); margin-bottom:1.5rem; border-bottom:2px solid var(--gold); padding-bottom:1rem;">PEMBINA</h2>
+          <div class="struktur-card" style="text-align:center; background:linear-gradient(135deg, rgba(0,128,0,0.08), rgba(255,255,0,0.05)); padding:2rem; border-radius:12px; border-left:4px solid var(--gold);">
+            <h3 style="font-size:1.3rem; color:#2F2F2F; margin-bottom:.5rem;">Nurmalia Hadi S. Si.</h3>
+          </div>
+        </div>
+
+        <!-- STRUKTUR INTI -->
+        <div class="struktur-section" style="margin-top:3rem;">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--gold); margin-bottom:1.5rem; border-bottom:2px solid var(--gold); padding-bottom:1rem;">PENGURUS INTI</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem;">
+            <div class="struktur-card" style="background:linear-gradient(135deg, rgba(0,128,0,0.08), rgba(255,255,0,0.05)); padding:1.5rem; border-radius:12px; border-left:4px solid var(--gold);">
+              <div style="font-size:.9rem; color:var(--muted); margin-bottom:.5rem; font-weight:600; text-transform:uppercase;">Ketua Umum</div>
+              <h3 style="font-size:1.2rem; color:#2F2F2F;">Hafis Alfatrah</h3>
+            </div>
+            <div class="struktur-card" style="background:linear-gradient(135deg, rgba(0,128,0,0.08), rgba(255,255,0,0.05)); padding:1.5rem; border-radius:12px; border-left:4px solid var(--gold);">
+              <div style="font-size:.9rem; color:var(--muted); margin-bottom:.5rem; font-weight:600; text-transform:uppercase;">Sekretaris Umum</div>
+              <h3 style="font-size:1.2rem; color:#2F2F2F;">Merryn Berlian Isnaini</h3>
+            </div>
+            <div class="struktur-card" style="background:linear-gradient(135deg, rgba(0,128,0,0.08), rgba(255,255,0,0.05)); padding:1.5rem; border-radius:12px; border-left:4px solid var(--gold);">
+              <div style="font-size:.9rem; color:var(--muted); margin-bottom:.5rem; font-weight:600; text-transform:uppercase;">Bendahara</div>
+              <h3 style="font-size:1.2rem; color:#2F2F2F;">Esa Putri Almadina</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIDANG-BIDANG -->
+        <div class="struktur-section" style="margin-top:3rem;">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--gold); margin-bottom:2rem; border-bottom:2px solid var(--gold); padding-bottom:1rem;">BIDANG-BIDANG</h2>
+          
+          <!-- Bidang Perkaderan -->
+          <div class="bidang-card" style="margin-bottom:2.5rem;">
+            <h3 style="font-size:1.3rem; color:#2F2F2F; margin-bottom:1rem; padding-bottom:.75rem; border-bottom:2px solid var(--gold-light);"> Bidang Perkaderan</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Ketua</strong></div>
+                <p style="margin:0; color:#2F2F2F;">M. Romi Nazarrudin</p>
+              </div>
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Sekretaris</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Nabila Zaskiya Chandra</p>
+              </div>
+            </div>
+            <div style="margin-top:1rem; padding:1rem; background:rgba(255,255,0,0.08); border-radius:8px;">
+              <div style="font-size:.9rem; color:var(--muted); font-weight:600; margin-bottom:.75rem;">Anggota:</div>
+              <ul style="margin:0; padding-left:1.5rem; font-size:.9rem; color:#2F2F2F;">
+                <li>Dzaki Tristan Aji</li>
+                <li>Tia Eka Yuniarsih</li>
+                <li>Kalica Nazwa Safitri</li>
+                <li>Clara Wahyuning Tyas</li>
+                <li>Nasywa Diva Zahra</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bidang KDI -->
+          <div class="bidang-card" style="margin-bottom:2.5rem;">
+            <h3 style="font-size:1.3rem; color:#2F2F2F; margin-bottom:1rem; padding-bottom:.75rem; border-bottom:2px solid var(--gold-light);"> Bidang KDI (Kajian Dakwah Islam)</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Ketua</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Fahmi Arifuddin Herliyanto</p>
+              </div>
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Sekretaris</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Azizah Hanifah Ulhak</p>
+              </div>
+            </div>
+            <div style="margin-top:1rem; padding:1rem; background:rgba(255,255,0,0.08); border-radius:8px;">
+              <div style="font-size:.9rem; color:var(--muted); font-weight:600; margin-bottom:.75rem;">Anggota:</div>
+              <ul style="margin:0; padding-left:1.5rem; font-size:.9rem; color:#2F2F2F;">
+                <li>Nadhira Arthalitha Rasyid</li>
+                <li>Qurota Ayun Permata Ningrum</li>
+                <li>Muhammad Galang Putra</li>
+                <li>Rayhan Firadaus Putra</li>
+                <li>Annisa Azmi Fatonah</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bidang PIP -->
+          <div class="bidang-card" style="margin-bottom:2.5rem;">
+            <h3 style="font-size:1.3rem; color:#2F2F2F; margin-bottom:1rem; padding-bottom:.75rem; border-bottom:2px solid var(--gold-light);"> Bidang PIP (Pengkajian Ilmu Pengetahuan)</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Ketua</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Vikri Al Husna</p>
+              </div>
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Sekretaris</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Zahra Khuzaifah</p>
+              </div>
+            </div>
+            <div style="margin-top:1rem; padding:1rem; background:rgba(255,255,0,0.08); border-radius:8px;">
+              <div style="font-size:.9rem; color:var(--muted); font-weight:600; margin-bottom:.75rem;">Anggota:</div>
+              <ul style="margin:0; padding-left:1.5rem; font-size:.9rem; color:#2F2F2F;">
+                <li>Windi Antika</li>
+                <li>Deva Lia Fajria</li>
+                <li>Khanza Zabirah</li>
+                <li>Andika Zuhriyanto</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bidang ASBO -->
+          <div class="bidang-card" style="margin-bottom:2.5rem;">
+            <h3 style="font-size:1.3rem; color:#2F2F2F; margin-bottom:1rem; padding-bottom:.75rem; border-bottom:2px solid var(--gold-light);"> Bidang ASBO (Apresiasi Seni Budaya dan Olahraga)</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Ketua</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Zahwa Alya Aneira</p>
+              </div>
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Sekretaris</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Sinta Bella Rahma Dini</p>
+              </div>
+            </div>
+            <div style="margin-top:1rem; padding:1rem; background:rgba(255,255,0,0.08); border-radius:8px;">
+              <div style="font-size:.9rem; color:var(--muted); font-weight:600; margin-bottom:.75rem;">Anggota:</div>
+              <ul style="margin:0; padding-left:1.5rem; font-size:.9rem; color:#2F2F2F;">
+                <li>Rizki Vetra Alfarezi</li>
+                <li>Silviana Putri</li>
+                <li>Eka Sri Utami</li>
+                <li>Jesika Nafin</li>
+                <li>Putri Raisa Nabila</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bidang Advokasi -->
+          <div class="bidang-card" style="margin-bottom:2.5rem;">
+            <h3 style="font-size:1.3rem; color:#2F2F2F; margin-bottom:1rem; padding-bottom:.75rem; border-bottom:2px solid var(--gold-light);"> Bidang Advokasi</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Ketua</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Afifah Zahra Indriyani</p>
+              </div>
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Sekretaris</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Nur Fatihah</p>
+              </div>
+            </div>
+            <div style="margin-top:1rem; padding:1rem; background:rgba(255,255,0,0.08); border-radius:8px;">
+              <div style="font-size:.9rem; color:var(--muted); font-weight:600; margin-bottom:.75rem;">Anggota:</div>
+              <ul style="margin:0; padding-left:1.5rem; font-size:.9rem; color:#2F2F2F;">
+                <li>Dinda Cantika Putri</li>
+                <li>Fitria Rahma Septika</li>
+                <li>Vatikah Nurul Utami</li>
+                <li>Azkia Ikrimatuuz Zahra</li>
+                <li>Shanaz Nadya Safwa</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bidang Kewirausahaan -->
+          <div class="bidang-card">
+            <h3 style="font-size:1.3rem; color:#2F2F2F; margin-bottom:1rem; padding-bottom:.75rem; border-bottom:2px solid var(--gold-light);"> Bidang PKKWU (Pengembangan Kreatifitas dan Kewirausahaan)</h3>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Ketua</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Zharotu Fitri</p>
+              </div>
+              <div style="background:rgba(0,128,0,0.04); padding:1rem; border-radius:8px; border-left:3px solid var(--gold);">
+                <div style="font-size:.85rem; color:var(--muted); margin-bottom:.3rem;"><strong>Sekretaris</strong></div>
+                <p style="margin:0; color:#2F2F2F;">Naifa Kinasih</p>
+              </div>
+            </div>
+            <div style="margin-top:1rem; padding:1rem; background:rgba(255,255,0,0.08); border-radius:8px;">
+              <div style="font-size:.9rem; color:var(--muted); font-weight:600; margin-bottom:.75rem;">Anggota:</div>
+              <ul style="margin:0; padding-left:1.5rem; font-size:.9rem; color:#2F2F2F;">
+                <li>Salwa Aqilah Putri</li>
+                <li>Azzahra Nur Rohma</li>
+                <li>Fiona Inka Safitri</li>
+                <li>Rasya Khoirunnisa</li>
+                <li>Talitha Nur Azizah</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- EDUKASI PAGE -->
+  <div id="page-edukasi" class="view">
+    <div style="background:linear-gradient(135deg, #F5F7F6, #FFFFFF); padding:3rem 2rem; text-align:center;">
+      <div class="section-tag" style="justify-content:center; color:var(--gold);">Pengembangan Diri</div>
+      <h1 style="font-family:'Playfair Display',serif; color:#2F2F2F; font-size:2.5rem; margin-top:.5rem;">Program Edukasi</h1>
+      <p style="color:var(--muted); font-size:1.05rem; margin-top:1rem;">Berbagai program edukasi dan pengembangan potensi untuk anggota</p>
+    </div>
+    <section class="section">
+      <div class="section-inner">
+        <div id="edukasi-grid" class="grid grid-2"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- DOKUMENTASI PAGE -->
+  <div id="page-dokumentasi" class="view">
+    <div style="background:linear-gradient(135deg, #F5F7F6, #FFFFFF); padding:3rem 2rem; text-align:center;">
+      <div class="section-tag" style="justify-content:center; color:var(--gold);">Referensi</div>
+      <h1 style="font-family:'Playfair Display',serif; color:#2F2F2F; font-size:2.5rem; margin-top:.5rem;">Dokumentasi</h1>
+      <p style="color:var(--muted); font-size:1.05rem; margin-top:1rem;">Kumpulan link referensi dan dokumentasi penting</p>
+    </div>
+    <section class="section">
+      <div class="section-inner">
+        <div class="table-card">
+          <table id="dokumentasi-public-table" style="width:100%;">
+            <thead><tr><th>Judul</th><th>Kategori</th><th>Aksi</th></tr></thead>
+            <tbody id="dokumentasi-public-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CALENDAR PAGE (PUBLIC) -->
+  <div id="page-kalender" class="view">
+    <div style="background:linear-gradient(135deg, #F5F7F6, #FFFFFF); padding:3rem 2rem; text-align:center;">
+      <div class="section-tag" style="justify-content:center; color:var(--gold);">Acara</div>
+      <h1 style="font-family:'Playfair Display',serif; color:#2F2F2F; font-size:2.5rem; margin-top:.5rem;">Kalender Acara</h1>
+    </div>
+    <section class="section">
+      <div class="section-inner">
+        <div class="calendar-container">
+          <div class="calendar-header">
+            <div class="calendar-nav">
+              <button onclick="publicPreviousMonth()">← Sebelumnya</button>
+              <div class="calendar-month" id="public-calendar-month">Februari 2026</div>
+              <button onclick="publicNextMonth()">Berikutnya →</button>
+            </div>
+          </div>
+          <div class="calendar-body">
+            <div class="calendar-weekdays">
+              <div class="calendar-weekday">Min</div>
+              <div class="calendar-weekday">Sen</div>
+              <div class="calendar-weekday">Sel</div>
+              <div class="calendar-weekday">Rab</div>
+              <div class="calendar-weekday">Kam</div>
+              <div class="calendar-weekday">Jum</div>
+              <div class="calendar-weekday">Sab</div>
+            </div>
+            <div class="calendar-days" id="public-calendar-days"></div>
+          </div>
+        </div>
+        <div class="events-list">
+          <div class="events-title"> Acara Bulan Ini</div>
+          <div id="public-calendar-events" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div id="page-contact" class="view">
+    <div style="background:linear-gradient(135deg, #F5F7F6, #FFFFFF); padding:3rem 2rem; text-align:center;">
+      <div class="section-tag" style="justify-content:center; color:var(--gold);">Hubungi Kami</div>
+      <h1 style="font-family:'Playfair Display',serif; color:#2F2F2F; font-size:2.5rem; margin-top:.5rem;">Mari Terhubung</h1>
+    </div>
+    <section class="section">
+      <div class="section-inner">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:.5rem;">Hubungi IPM SMA MUHAMMADIYAH 1 METRO</h3>
+            <p style="color:var(--muted); line-height:1.7; margin-bottom:1.5rem;">Punya pertanyaan tentang IPM, ingin bergabung, atau ingin berkolaborasi? Jangan ragu untuk menghubungi kami melalui berbagai channel komunikasi di bawah ini.</p>
+            <div class="contact-item"><div class="contact-icon"></div><div><strong>Alamat</strong><br><a href="https://maps.app.goo.gl/A8YR7mbXjcGiUbUs5" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:500;">Jl. Khairbras No. 65, Ganjar Asri, Kec. Metro Barat, Kota Metro, Lampung.</a></div></div>
+            <div class="contact-item"><div class="contact-icon"></div><div><strong>Email</strong><br><a href="/cdn-cgi/l/email-protection#157c657866787478607d24787061677a557278747c793b767a78" style="color:var(--gold); text-decoration:none; font-weight:500;"><span class="__cf_email__" data-cfemail="b2dbc2dfc1dfd3dfc7da83dfd7c6c0ddf2d5dfd3dbde9cd1dddf">[email&#160;protected]</span></a></div></div>
+            <div class="contact-item"><div class="contact-icon"></div><div><strong>WhatsApp</strong><br><a href="https://wa.me/6285184459363" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:500;">+6285184459363</a></div></div>
+            <div class="contact-item"><div class="contact-icon"></div><div><strong>Instagram</strong><br><div style="margin-top:.5rem;">
+              <p style="color:var(--muted); font-size:.9rem; margin-bottom:.3rem;"><a href="https://www.instagram.com/pripm_smamuhimetro?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="color:var(--gold); text-decoration:none;">@pripm_smamuhimetro</a></p>
+              <p style="color:var(--muted); font-size:.9rem;"><a href="https://www.instagram.com/ipeeeeem_1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="color:var(--gold); text-decoration:none;">@ipeeeeem_1</a></p>
+            </div></div></div>
+          </div>
+          <div class="contact-form">
+            <h3 style="font-weight:600; margin-bottom:1.5rem; color:var(--text);">Kirim Pesan</h3>
+            <div class="form-row">
+              <div class="form-group"><label>Nama Lengkap</label><input type="text" id="contact-name" placeholder="siswa"></div>
+              <div class="form-group"><label>Email</label><input type="email" id="contact-email" placeholder="siswa@gmail.com"></div>
+            </div>
+            <div class="form-group"><label>Subjek</label><input type="text" id="contact-subject" placeholder="saya ingin bertanya"></div>
+            <div class="form-group"><label>Pesan</label><textarea id="contact-message" rows="5" placeholder="Tulis pesan Anda di sini..."></textarea></div>
+            <button class="btn btn-primary" onclick="sendWhatsApp()">Kirim Pesan →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; text-align: left;">
+        <div>
+          <div style="display: flex; align-items: center; gap: .5rem; margin-bottom: .75rem;">
+            <img src="https://raw.githubusercontent.com/vikrialhusna221-lang/STORAGE/main/53_20251214_104522_0000.png" alt="Logo" style="height: 40px; width: auto;">
+            <span class="brand" style="margin: 0; font-size: 0.95rem;">PR IPM SMA MUHAMMADIYAH 1 METRO</span>
+          </div>
+          <p style="font-size: .8rem; line-height: 1.5;">IPM adalah organisasi pelajar fokus pada pembinaan karakter, kepemimpinan, dan pengembangan potensi pelajar.</p>
+        </div>
+        <div>
+          <h4 style="color: var(--white); margin-bottom: .75rem; font-weight: 600; font-size: .95rem;">Hubungi Kami</h4>
+          <div style="font-size: .8rem; line-height: 1.6;">
+            <p style="margin-bottom: .4rem;"><strong> Alamat:</strong><br><a href="https://maps.app.goo.gl/A8YR7mbXjcGiUbUs5" target="_blank" style="color: var(--white); text-decoration: none; opacity: 0.9;">Jl. Khairbras No. 65, Metro, Lampung</a></p>
+            <p style="margin-bottom: .4rem;"><strong> Email:</strong><br><a href="/cdn-cgi/l/email-protection#177e677a647a767a627f267a7263657857707a767e7b3974787a" style="color: var(--white); text-decoration: none; opacity: 0.9;"><span class="__cf_email__" data-cfemail="2148514c524c404c5449104c4455534e61464c40484d0f424e4c">[email&#160;protected]</span></a></p>
+            <p style="margin-bottom: .4rem;"><strong> WhatsApp:</strong><br><a href="https://wa.me/6285184459363" target="_blank" style="color: var(--white); text-decoration: none; opacity: 0.9;">+62 851 8445 9363</a></p>
+          </div>
+        </div>
+        <div>
+          <h4 style="color: var(--white); margin-bottom: .75rem; font-weight: 600; font-size: .95rem;">Ikuti Kami</h4>
+          <div style="font-size: .8rem; line-height: 1.6;">
+            <p style="margin-bottom: .4rem;"><a href="https://www.instagram.com/pripm_smamuhimetro?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="color: var(--white); text-decoration: none; opacity: 0.9;"> @pripm_smamuhimetro</a></p>
+            <p style="margin-bottom: .4rem;"><a href="https://www.instagram.com/ipeeeeem_1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" style="color: var(--white); text-decoration: none; opacity: 0.9;"> @ipeeeeem_1</a></p>
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.25); padding-top: .75rem; text-align: center;">
+        <small style="opacity: 0.8; font-size: 0.8rem;">©PIP PR IPM SMA MUHAMMADIYAH 1 METRO</small>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════
+     ADMIN & MEMBER LOGIN
+══════════════════════════════════ -->
+<div id="page-login" class="view">
+  <div class="login-screen">
+    <div class="login-container">
+      <!-- OVERLAY PANEL -->
+      <div class="login-overlay-panel" id="overlayPanel">
+        <img src="https://raw.githubusercontent.com/vikrialhusna221-lang/STORAGE/main/53_20251214_104522_0000.png" alt="Logo IPM" style="height: 60px; width: auto; margin-bottom: 1.5rem; border-radius: 10px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));">
+        <h3 id="overlayTitle">MASUK</h3>
+        <p id="overlayText">Akses database</p>
+        <button class="overlay-btn" id="toggleBtn" onclick="toggleLoginMode()">Admin</button>
+      </div>
+
+      <!-- LOGIN FORMS -->
+      <div class="login-forms">
+        <!-- ANGGOTA FORM (LEFT SIDE) - LOGIN ONLY -->
+        <div class="login-form-side" id="memberForm">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <img src="https://raw.githubusercontent.com/vikrialhusna221-lang/STORAGE/main/53_20251214_104522_0000.png" alt="Logo IPM" style="height: 35px; width: auto; border-radius: 6px; box-shadow: 0 3px 8px rgba(0,128,0,0.15);">
+            <div class="logo" style="font-size: 0.95rem;">PR IPM</div>
+          </div>
+          <div class="sub">Login dengan Nama Terdaftar</div>
+          <div id="member-error" class="alert alert-error" style="display:none;"></div>
+          
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="member-nama-login" placeholder="Masukkan nama lengkap" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="member-pass-login" placeholder="Masukkan password" required>
+            <button type="button" class="password-toggle" onclick="togglePasswordVisibility('member-pass-login', event)"></button>
+          </div>
+          <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:.75rem; font-weight: 700;" onclick="doLoginMember(event)">Masuk →</button>
+          
+          <button class="back-btn" onclick="showPage('home')">← Kembali ke Portal</button>
+        </div>
+
+        <!-- ADMIN LOGIN (RIGHT SIDE) -->
+        <div class="login-form-side" id="adminForm" style="display:none;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+              <img src="https://raw.githubusercontent.com/vikrialhusna221-lang/STORAGE/main/53_20251214_104522_0000.png" alt="Logo IPM" style="height: 35px; width: auto; border-radius: 6px; box-shadow: 0 3px 8px rgba(0,128,0,0.15);">
+              <div class="logo">PR IPM SMA MUHAMMADIYAH 1 METRO</div>
+            </div>
+            <div class="sub">Login sebagai Admin</div>
+            <div id="admin-error" class="alert alert-error" style="display:none;"></div>
+            
+            <div class="form-group">
+              <label>Username Admin</label>
+              <input type="text" id="login-email" placeholder="admin" required>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" id="login-pass" placeholder="Masukkan password" required>
+              <button type="button" class="password-toggle" onclick="togglePasswordVisibility('login-pass', event)"></button>
+            </div>
+            <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:.75rem; font-weight: 700;" onclick="doLogin(event)">Masuk ke Dashboard →</button>
+            <button class="back-btn" onclick="showPage('home')">← Kembali ke Portal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ADMIN DASHBOARD
+══════════════════════════════════ -->
+<div id="admin-dashboard" class="view">
+  <div class="admin-shell">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="logo">PR IPM SMA MUHAMMADIYAH 1 METRO</div>
+        <div class="sub">Admin Panel</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">Utama</div>
+        <div class="sidebar-link active" data-tooltip="Dashboard" onclick="switchPanel('dashboard', this)"><span class="icon"></span><span class="sidebar-link-text">Dashboard</span></div>
+        <div class="sidebar-section">Konten</div>
+        <div class="sidebar-link" data-tooltip="Kelola Berita" onclick="switchPanel('news-admin', this)"><span class="icon"></span><span class="sidebar-link-text">Kelola Berita</span></div>
+        <div class="sidebar-link" data-tooltip="Kelola Prestasi" onclick="switchPanel('ach-admin', this)"><span class="icon"></span><span class="sidebar-link-text">Kelola Prestasi</span></div>
+        <div class="sidebar-link" data-tooltip="Kalender" onclick="switchPanel('calendar-admin', this)"><span class="icon"></span><span class="sidebar-link-text">Kalender</span></div>
+        <div class="sidebar-section">Data Anggota</div>
+        <div class="sidebar-link" data-tooltip="Bidang Anggota" onclick="switchPanel('member-bidang', this)"><span class="icon"></span><span class="sidebar-link-text">Bidang Anggota</span></div>
+        <div class="sidebar-link" data-tooltip="Kelola Anggota" onclick="switchPanel('manage-members', this)"><span class="icon"></span><span class="sidebar-link-text">Kelola Anggota</span></div>
+        <div class="sidebar-section">Manajemen</div>
+        <div class="sidebar-link" data-tooltip="Edukasi" onclick="switchPanel('edukasi-admin', this)"><span class="icon"></span><span class="sidebar-link-text">Edukasi</span></div>
+        <div class="sidebar-link" data-tooltip="Dokumentasi" onclick="switchPanel('dokumentasi-admin', this)"><span class="icon"></span><span class="sidebar-link-text">Dokumentasi</span></div>
+        <div class="sidebar-section">Sistem</div>
+        <div class="sidebar-link" data-tooltip="Lihat Portal" onclick="showPage('home')"><span class="icon"></span><span class="sidebar-link-text">Lihat Portal</span></div>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-btn" data-tooltip="Logout" onclick="doLogout()"><span class="sidebar-link-text">Logout</span></button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <div class="topbar-title" id="topbar-title">Dashboard</div>
+        <div class="topbar-user">
+          <spann>Admin</spann>
+          <div class="avatar">V</div>
+        </div>
+      </div>
+
+      <div class="admin-content">
+
+        <!-- DASHBOARD PANEL -->
+        <div class="admin-panel active" id="panel-dashboard">
+          <div class="stats-grid">
+            <div class="stat-card"><div class="icon"></div><div class="label">Total Berita</div><div class="value" id="stat-news">-</div><div class="trend">↑ 2 bulan ini</div></div>
+            <div class="stat-card"><div class="icon"></div><div class="label">Total Prestasi</div><div class="value" id="stat-ach">-</div><div class="trend">↑ 1 baru</div></div>
+            <div class="stat-card"><div class="icon"></div><div class="label">Pesan Masuk</div><div class="value">-</div><div class="trend">3 belum dibaca</div></div>
+          </div>
+
+          <div class="table-card">
+            <div class="table-header"><h3>Berita Terbaru</h3></div>
+            <table id="dash-news-table">
+              <thead><tr><th>Judul</th><th>Tanggal</th><th>Status</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- NEWS ADMIN PANEL -->
+        <div class="admin-panel" id="panel-news-admin">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+            <h2 style="font-family:'Playfair Display',serif; color:var(--text);">Kelola Berita</h2>
+            <button class="btn-sm btn-gold" onclick="openNewsModal()">+ Tambah Berita</button>
+          </div>
+          <div class="table-card">
+            <table id="news-admin-table">
+              <thead><tr><th></th><th>Judul</th><th>Tanggal</th><th>Status</th><th>Aksi</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ACHIEVEMENT ADMIN PANEL -->
+        <div class="admin-panel" id="panel-ach-admin">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+            <h2 style="font-family:'Playfair Display',serif; color:var(--text);">Kelola Prestasi</h2>
+            <button class="btn-sm btn-gold" onclick="openAchModal()">+ Tambah Prestasi</button>
+          </div>
+          <div class="table-card">
+            <table id="ach-admin-table">
+              <thead><tr><th></th><th>Judul</th><th>Tahun</th><th>Deskripsi</th><th>Aksi</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CALENDAR ADMIN PANEL -->
+        <div class="admin-panel" id="panel-calendar-admin">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--text); margin-bottom:2rem;">Kalender Acara IPM</h2>
+          
+          <div style="background:rgba(0,128,0,0.08); border:1.5px solid rgba(0,128,0,0.15); border-radius:14px; padding:1.75rem; margin-bottom:2rem;">
+            <h3 style="color:var(--text); margin-bottom:1rem; font-weight:600;">+ Tandai Acara Baru</h3>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-bottom:1rem;">
+              <input type="date" id="calendar-event-date" style="padding:0.75rem; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif;">
+              <input type="text" id="calendar-event-title" placeholder="Nama acara..." style="padding:0.75rem; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif;">
+              <button class="btn-sm btn-gold" onclick="addCalendarEvent()" style="width:100%;">Tandai</button>
+            </div>
+            <textarea id="calendar-event-desc" placeholder="Deskripsi acara (opsional)" rows="2" style="width:100%; padding:0.75rem; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif;">  </textarea>
+          </div>
+
+          <div class="calendar-container">
+            <div class="calendar-header">
+              <div class="calendar-nav">
+                <button onclick="adminPreviousMonth()">← Sebelumnya</button>
+                <div class="calendar-month" id="admin-calendar-month">Februari 2026</div>
+                <button onclick="adminNextMonth()">Berikutnya →</button>
+              </div>
+            </div>
+            <div class="calendar-body">
+              <div class="calendar-weekdays">
+                <div class="calendar-weekday">Min</div>
+                <div class="calendar-weekday">Sen</div>
+                <div class="calendar-weekday">Sel</div>
+                <div class="calendar-weekday">Rab</div>
+                <div class="calendar-weekday">Kam</div>
+                <div class="calendar-weekday">Jum</div>
+                <div class="calendar-weekday">Sab</div>
+              </div>
+              <div class="calendar-days" id="admin-calendar-days"></div>
+            </div>
+          </div>
+
+          <div class="events-list">
+            <div class="events-title"> Acara Bulan Ini</div>
+            <div id="admin-calendar-events" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+          </div>
+        </div>
+
+        <!-- MEMBER BIDANG VIEW PANEL -->
+        <div class="admin-panel" id="panel-member-bidang">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--text); margin-bottom:2rem;">Bidang-Bidang Anggota</h2>
+          <div id="admin-member-bidang-content"></div>
+        </div>
+
+        <!-- MANAGE MEMBERS PANEL -->
+        <div class="admin-panel" id="panel-manage-members">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+            <h2 style="font-family:'Playfair Display',serif; color:var(--text);">Kelola Anggota</h2>
+            <div style="display:flex; gap:1rem; align-items:center;">
+              <input type="text" id="member-search" placeholder="Cari anggota..." style="padding:0.65rem 1rem; border:1.5px solid var(--border); border-radius:10px; font-size:0.9rem;">
+              <button class="btn-sm btn-gold" onclick="openMemberModal()">+ Tambah Anggota</button>
+            </div>
+          </div>
+          <div class="table-card">
+            <table id="manage-members-table">
+              <thead><tr><th>Nama</th><th>Email</th><th>Bidang</th><th>Tgl Daftar</th><th>Status</th><th>Aksi</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- EDUKASI MANAGEMENT PANEL -->
+        <div class="admin-panel" id="panel-edukasi-admin">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+            <h2 style="font-family:'Playfair Display',serif; color:var(--text);">Kelola Edukasi</h2>
+            <button class="btn-sm btn-gold" onclick="openEdukasiModal()">+ Tambah Materi</button>
+          </div>
+          <div class="table-card">
+            <table id="edukasi-admin-table">
+              <thead><tr><th></th><th>Judul</th><th>Kategori</th><th>Tanggal</th><th>Aksi</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- DOKUMENTASI MANAGEMENT PANEL -->
+        <div class="admin-panel" id="panel-dokumentasi-admin">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+            <h2 style="font-family:'Playfair Display',serif; color:var(--text);">Kelola Dokumentasi</h2>
+            <button class="btn-sm btn-gold" onclick="openDokumentasiModal()">+ Tambah Link</button>
+          </div>
+          <div class="table-card">
+            <table id="dokumentasi-admin-table">
+              <thead><tr><th>Judul</th><th>Link</th><th>Kategori</th><th>Aksi</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     MODALS
+══════════════════════════════════ -->
+<!-- News Modal -->
+<div class="modal-overlay" id="modal-news">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="news-modal-title">Tambah Berita</h3>
+      <button class="modal-close" onclick="closeModal('modal-news')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="news-edit-id">
+      <div class="form-group"><label>Judul Berita *</label><input type="text" id="news-form-title" placeholder="Masukkan judul berita..."></div>
+      <div class="form-group"><label>Konten *</label><textarea id="news-form-content" rows="6" placeholder="Tulis isi berita di sini..."></textarea></div>
+      <div class="form-group">
+        <label>Upload Gambar</label>
+        <div class="upload-zone" onclick="document.getElementById('news-img-input').click()">
+          <div class="upload-icon">️</div>
+          <p>Klik atau drag &amp; drop gambar<br><small style="color:var(--muted)">PNG, JPG, max 5MB</small></p>
+          <input type="file" id="news-img-input" accept="image/*" style="display:none" onchange="previewImg(this,'news-img-preview')">
+        </div>
+        <img id="news-img-preview" style="display:none; width:100%; border-radius:8px; margin-top:.5rem; max-height:180px; object-fit:cover;">
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-sm btn-ghost" onclick="closeModal('modal-news')">Batal</button>
+      <button class="btn-sm btn-gold" onclick="saveNews()">Simpan Berita</button>
+    </div>
+  </div>
+</div>
+
+<!-- Achievement Modal -->
+<div class="modal-overlay" id="modal-ach">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="ach-modal-title">Tambah Prestasi</h3>
+      <button class="modal-close" onclick="closeModal('modal-ach')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="ach-edit-id">
+      <div class="form-group"><label>Judul Prestasi *</label><input type="text" id="ach-form-title" placeholder="Juara 1 Kompetisi Nasional..."></div>
+      <div class="form-group"><label>Deskripsi *</label><textarea id="ach-form-desc" rows="4" placeholder="Deskripsi pencapaian..."></textarea></div>
+      <div class="form-group"><label>Tahun *</label><input type="number" id="ach-form-year" placeholder="2024" min="2000" max="2030"></div>
+      <div class="form-group">
+        <label>Upload Gambar</label>
+        <div class="upload-zone" onclick="document.getElementById('ach-img-input').click()">
+          <div class="upload-icon"></div>
+          <p>Klik untuk upload gambar prestasi</p>
+          <input type="file" id="ach-img-input" accept="image/*" style="display:none" onchange="previewImg(this,'ach-img-preview')">
+        </div>
+        <img id="ach-img-preview" style="display:none; width:100%; border-radius:8px; margin-top:.5rem; max-height:180px; object-fit:cover;">
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-sm btn-ghost" onclick="closeModal('modal-ach')">Batal</button>
+      <button class="btn-sm btn-gold" onclick="saveAch()">Simpan Prestasi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edukasi Modal -->
+<div class="modal-overlay" id="modal-edukasi">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="edukasi-modal-title">Tambah Materi Edukasi</h3>
+      <button class="modal-close" onclick="closeModal('modal-edukasi')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="edukasi-edit-id">
+      <div class="form-group"><label>Judul Materi *</label><input type="text" id="edukasi-form-title" placeholder="Judul materi edukasi..."></div>
+      <div class="form-group"><label>Kategori *</label><select id="edukasi-form-cat" style="width:100%; padding:0.75rem; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif;"><option value="">Pilih Kategori</option><option value="workshop">Workshop</option><option value="webinar">Webinar</option><option value="training">Training</option><option value="seminar">Seminar</option></select></div>
+      <div class="form-group"><label>Deskripsi *</label><textarea id="edukasi-form-desc" rows="4" placeholder="Deskripsi materi..."></textarea></div>
+      <div class="form-group"><label>Tanggal *</label><input type="date" id="edukasi-form-date"></div>
+      <div class="form-group">
+        <label>Upload Gambar/Poster</label>
+        <div class="upload-zone" onclick="document.getElementById('edukasi-img-input').click()">
+          <div class="upload-icon"></div>
+          <p>Klik untuk upload gambar</p>
+          <input type="file" id="edukasi-img-input" accept="image/*" style="display:none" onchange="previewImg(this,'edukasi-img-preview')">
+        </div>
+        <img id="edukasi-img-preview" style="display:none; width:100%; border-radius:8px; margin-top:.5rem; max-height:180px; object-fit:cover;">
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-sm btn-ghost" onclick="closeModal('modal-edukasi')">Batal</button>
+      <button class="btn-sm btn-gold" onclick="saveEdukasi()">Simpan Materi</button>
+    </div>
+  </div>
+</div>
+
+<!-- Member Modal -->
+<div class="modal-overlay" id="modal-member">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="member-modal-title">Tambah Anggota Baru</h3>
+      <button class="modal-close" onclick="closeModal('modal-member')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="member-edit-id">
+      <div class="form-group">
+        <label>Nama Lengkap *</label>
+        <input type="text" id="member-form-fullname" placeholder="Masukkan nama lengkap...">
+      </div>
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" id="member-form-email" placeholder="nama@email.com">
+      </div>
+      <div class="form-group">
+        <label>Password *</label>
+        <input type="password" id="member-form-password" placeholder="Masukkan password" required>
+        <button type="button" class="password-toggle" onclick="togglePasswordVisibility('member-form-password', event)" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); border:none; background:none; cursor:pointer; font-size:1rem;"></button>
+      </div>
+      <div class="form-group">
+        <label>Nomor HP *</label>
+        <input type="tel" id="member-form-phone" placeholder="08xx-xxxx-xxxx">
+      </div>
+      <div class="form-group">
+        <label>Bidang *</label>
+        <select id="member-form-bidang" style="width:100%; padding:0.75rem; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif;">
+          <option value="">Pilih Bidang</option>
+          <option value="ketua-umum">Ketua Umum</option>
+          <option value="sekertaris-umum">Sekertaris Umum</option>
+          <option value="bendahara-umum">Bendahara Umum</option>
+          <option value="guest">Guest</option>
+          <option value="ketua-bidang">Ketua Bidang</option>
+          <option value="sekertaris-bidang">Sekertaris Bidang</option>
+          <option value="anggota-bidang">Anggota Bidang</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Status *</label>
+        <select id="member-form-status" style="width:100%; padding:0.75rem; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif;">
+          <option value="">Pilih Status</option>
+          <option value="aktif">Aktif</option>
+          <option value="nonaktif">Nonaktif</option>
+          <option value="alumni">Alumni</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-sm btn-ghost" onclick="closeModal('modal-member')">Batal</button>
+      <button class="btn-sm btn-gold" onclick="saveMember()">Simpan Anggota</button>
+    </div>
+  </div>
+</div>
+
+<!-- Dokumentasi Modal -->
+<div class="modal-overlay" id="modal-dokumentasi">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="dokumentasi-modal-title">Tambah Link Dokumentasi</h3>
+      <button class="modal-close" onclick="closeModal('modal-dokumentasi')">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="dokumentasi-edit-id">
+      <div class="form-group"><label>Judul *</label><input type="text" id="dokumentasi-form-title" placeholder="Judul dokumentasi..."></div>
+      <div class="form-group"><label>URL/Link *</label><input type="url" id="dokumentasi-form-url" placeholder="https://example.com/dokumen"></div>
+      <div class="form-group"><label>Kategori *</label><select id="dokumentasi-form-cat" style="width:100%; padding:0.75rem; border:1.5px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif;"><option value="">Pilih Kategori</option><option value="pedoman">Pedoman</option><option value="proposal">Proposal</option><option value="laporan">Laporan</option><option value="sop">SOP</option><option value="lainnya">Lainnya</option></select></div>
+      <div class="form-group"><label>Deskripsi</label><textarea id="dokumentasi-form-desc" rows="3" placeholder="Deskripsi singkat..."></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-sm btn-ghost" onclick="closeModal('modal-dokumentasi')">Batal</button>
+      <button class="btn-sm btn-gold" onclick="saveDokumentasi()">Simpan Link</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirm Modal -->
+<div class="modal-overlay" id="modal-delete">
+  <div class="modal" style="max-width:420px;">
+    <div class="modal-head">
+      <h3>Konfirmasi Hapus</h3>
+      <button class="modal-close" onclick="closeModal('modal-delete')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p id="delete-msg" style="color:var(--muted); line-height:1.6;"></p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-sm btn-ghost" onclick="closeModal('modal-delete')">Batal</button>
+      <button class="btn-sm btn-danger" onclick="confirmDelete()">Ya, Hapus</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ══════════════════════════════════
+     MEMBER DASHBOARD
+══════════════════════════════════ -->
+<div id="member-dashboard" class="view">
+  <div class="member-shell">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="logo">PR IPM SMA MUHAMMADIYAH 1 METRO</div>
+        <div class="sub">Member Portal</div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">Utama</div>
+        <div class="sidebar-link active" onclick="switchMemberPanel('dashboard', this)"><span class="icon"></span> Dashboard</div>
+        <div class="sidebar-link" onclick="switchMemberPanel('calendar', this)"><span class="icon"></span> Kalender</div>
+        <div class="sidebar-section">Konten</div>
+        <div class="sidebar-link" onclick="switchMemberPanel('news', this)"><span class="icon"></span> Berita</div>
+        <div class="sidebar-section">Program</div>
+        <div class="sidebar-link" onclick="switchMemberPanel('programs', this)"><span class="icon"></span> Program Kerja</div>
+        <div class="sidebar-link" onclick="switchMemberPanel('bidang', this)"><span class="icon"></span> Data Bidang</div>
+        <div class="sidebar-section">Sistem</div>
+        <div class="sidebar-link" onclick="showPage('home')"><span class="icon"></span> Lihat Portal</div>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="doMemberLogout()"> Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="member-main">
+      <div class="admin-topbar">
+        <div class="topbar-title" id="member-topbar-title">Dashboard</div>
+        <div class="topbar-user">
+          <span id="member-name">Member</span>
+          <div class="avatar" id="member-avatar">M</div>
+        </div>
+      </div>
+
+      <div class="member-content">
+        <!-- DASHBOARD PANEL -->
+        <div class="member-panel active" id="member-panel-dashboard">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--text); margin-bottom:2rem;">Selamat Datang, <span id="member-welcome-name">Member</span>!</h2>
+          
+          <div class="stats-grid">
+            <div class="stat-card"><div class="icon"></div><div class="label">Acara Bulan Ini</div><div class="value" id="stat-events">-</div></div>
+            <div class="stat-card"><div class="icon"></div><div class="label">Program Kerja</div><div class="value" id="stat-programs">-</div></div>
+            <div class="stat-card"><div class="icon"></div><div class="label">Bidang Aktif</div><div class="value" id="stat-bidang">-</div></div>
+            <div class="stat-card"><div class="icon"></div><div class="label">Anggota Bidang</div><div class="value" id="stat-members">-</div></div>
+          </div>
+
+          <div style="margin-top:2.5rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--text); margin-bottom:1.5rem; border-bottom:2px solid rgba(0,128,0,0.1); padding-bottom:1rem;">Acara Mendatang</h3>
+            <div id="dashboard-events" style="display:flex; flex-direction:column; gap:1rem;"></div>
+          </div>
+        </div>
+
+        <!-- CALENDAR PANEL -->
+        <div class="member-panel" id="member-panel-calendar">
+          <div class="calendar-container">
+            <div class="calendar-header">
+              <div class="calendar-nav">
+                <button onclick="previousMonth()">← Sebelumnya</button>
+                <div class="calendar-month" id="calendar-month">Februari 2026</div>
+                <button onclick="nextMonth()">Berikutnya →</button>
+              </div>
+            </div>
+            <div class="calendar-body">
+              <div class="calendar-weekdays">
+                <div class="calendar-weekday">Min</div>
+                <div class="calendar-weekday">Sen</div>
+                <div class="calendar-weekday">Sel</div>
+                <div class="calendar-weekday">Rab</div>
+                <div class="calendar-weekday">Kam</div>
+                <div class="calendar-weekday">Jum</div>
+                <div class="calendar-weekday">Sab</div>
+              </div>
+              <div class="calendar-days" id="calendar-days"></div>
+            </div>
+          </div>
+
+          <div class="events-list">
+            <div class="events-title"> Acara Bulan Ini</div>
+            <div id="calendar-events" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+          </div>
+        </div>
+
+        <!-- PROGRAMS PANEL -->
+        <div class="member-panel" id="member-panel-programs">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--text); margin-bottom:2rem;">Program Kerja 2026</h2>
+          <div id="member-programs-content"></div>
+        </div>
+
+        <!-- BIDANG DATA PANEL -->
+        <div class="member-panel" id="member-panel-bidang">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--text); margin-bottom:2rem;">Data Bidang-Bidang IPM</h2>
+          <div id="member-bidang-content"></div>
+        </div>
+
+        <!-- NEWS PANEL -->
+        <div class="member-panel" id="member-panel-news">
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--text); margin-bottom:2rem;">Berita IPM</h2>
+          <div id="member-news-content" style="display:grid; gap:1.5rem;"></div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     JAVASCRIPT — APP STATE & LOGIC
+══════════════════════════════════ -->
+<!-- Cloudflare email-decode -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<!-- Main Application JS -->
+<script src="index.js"></script>
+</body>
+</html>
