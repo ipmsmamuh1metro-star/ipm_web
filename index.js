@@ -3,8 +3,8 @@
 //  Ganti SUPABASE_URL dan SUPABASE_KEY dengan milik kamu!
 //  Dapatkan dari: Supabase Dashboard → Project Settings → API
 // ══════════════════════════════════════════════════════════
-const SUPABASE_URL = 'https://sbipkblxezdrkmsnlwol.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_o1VZBWT9rIj8j-FEUNN7Tg_vmV7gqLo';
+const SUPABASE_URL = 'https://ttlfviimwxacxznfmtcg.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Wn1Y4W9rHBXElktDGiFq3A_XTGXHIq1';
 
 // ── CLOUDINARY CONFIG (untuk upload gambar) ──
 // Cloud Name dan Upload Preset dikonfigurasi di fungsi uploadToImgBB (bawah)
